@@ -1,271 +1,542 @@
-<!-- Beginner-friendly landing page with logo, navigation, and hero section -->
+<!--
+  Beginner-friendly landing page for a nonprofit.
+  This code uses only simple HTML and CSS.
+  Comments explain each part for students learning web basics.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charity: Water Supporter</title>
-  <!-- 
-    We use a style block here for simplicity.
-    You can move these styles to a separate style.css file if you want.
-  -->
+  <title>Charity Nonprofit Landing Page</title>
   <style>
-    /* Define brand colors as variables for easy use */
-    :root {
-      --misty-gray: #CBCDD1;
-      --nature-green: #7BAE7F;
-      --soft-blue: #77ABBC;
-      --deep-navy: #003366;
-      --rich-black: #1A1A1A;
-      --bold-yellow: #FFC907;
-    }
-
+    /* Set a simple background and font for the whole page */
     body {
-      font-family: Arial, Helvetica, sans-serif; /* Simple, readable font */
-      background: var(--misty-gray);
-      color: var(--rich-black);
+      font-family: Arial, sans-serif; /* Easy-to-read font */
       margin: 0;
       padding: 0;
+      background-color: #F2F2F2; /* Light gray from the color palette */
     }
 
-    /* Logo banner at the top */
+    /* Simple logo banner at the top */
     .logo-container {
       text-align: center;
-      padding: 24px 0 12px 0;
-      background: #fff;
+      /* Add more padding to make the logo header larger */
+      /* Make the logo image larger for better visibility */
+      /* The .logo-img class below sets width to 80px, but you can increase it here if needed */
+      /* Center the logo image and add margin below for spacing */
+      /* The .logo-img class will handle centering and spacing */
+      padding: 18px 0 10px 0; /* Reduced padding to make logo area smaller */
+      /* Make the logo text larger than the navigation menu */
+      font-size: 2.2em;
+      /* Responsive: make logo header smaller on small screens */
+      /* This will be overridden by the media query below */
+      background: #1A1A1A; /* Match nav and hero background */
       font-size: 1.5em;
       font-weight: bold;
+      /* Make the logo blend with the hero section by using yellow background and padding */
+      color: #FFC907;
+      /* Set background color of logo heading to yellow */
+      background-color: #FFC907;
+      /* Make the logo image larger */
+      /* The logo image is inside .logo-container, so increase its size */
     }
-    .nav-logo-img {
-      height: 40px;
-      width: auto;
+    .logo-container img {
+      width: 80px;
       vertical-align: middle;
-      margin-right: 8px;
+    }
+    /* Center the logo image */
+    .logo-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Navigation bar styles */
     nav {
-      background: var(--deep-navy);
-      color: #fff;
-      padding: 0.5em 1em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      /* Remove background so it blends with the logo and hero */
+      background: #FFC907; /* Set navigation background to yellow */
+      color: #003366;      /* Set navigation text to dark blue */
+      color: #FFC907;
+      padding: 10px;
+      text-align: center;
+      position: relative; /* Position relative for absolute positioning of hamburger */
     }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1em;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-links a {
-      color: #fff;
+    nav a {
+      color: #a7a7a7;
       text-decoration: none;
+      margin: 0 10px;
       font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 5px;
+      transition: background 0.2s;
     }
-    /* Hamburger menu for mobile */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      margin-left: 1em;
-    }
-    .hamburger span {
-      height: 4px;
-      width: 25px;
-      background: #fff;
-      margin: 3px 0;
-      border-radius: 2px;
-      display: block;
+    nav a:hover,
+    nav a:focus {
+      background: #1A1A1A; /* Dark background to match logo and hero */
+      /* Change link hover color to yellow with a simple overlay effect */
+      color: #FFC907; /* Yellow */
+      background: rgba(0,0,0,0.15); /* Slight dark overlay */
+      outline: none;
+      /* Add a nearly transparent border for a subtle effect */
+      border: 2px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Hero section styles */
+    /* Hamburger button styles for mobile */
+    /* Hamburger menu is a common mobile navigation style.
+       Other simple beginner-friendly formats include:
+       - Horizontal navigation bar (default on desktop)
+      - Vertical sidebar menu (links stacked on the left or right)
+      - Horizontal navigation bar (links in a row at the top, for desktop)
+      - Tab navigation (links look like tabs, usually for sections; used here for mobile)
+       - Simple dropdown menu (links appear below a button)
+       - Tab navigation (links look like tabs, usually for sections)
+       - Footer navigation (links at the bottom of the page)
+       Here we use the hamburger for mobile, but you can try others!
+    */
+    .hamburger {
+      display: none; /* Hidden by default, shown on mobile */
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #FFC907; /* Yellow background for hamburger lines */
+      margin: 4px 0;
+      transition: all 0.3s;
+    }
+
+    /* Hero section styles with background image */
     .hero {
-      /* charity: water campaign photo from their site */
-      background-image: url('img/herophoto.png';
+      background-image: url('img/herophoto.jpg'); /* This path points to the image in your img folder */
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: white;
+      /* Set hero background color to match the logo heading (yellow) */
+      background-color: #FFC907;
       text-align: center;
-      padding: 20px;
-    }
-    .hero-content {
-      /* Ensures text is readable regardless of background */
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 8px;
+      padding: 60px 20px;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* No overlay, so background color blends with nav and header */
     }
     .hero h1 {
-      color: var(--bold-yellow);
-      font-size: 2.5em;
-      font-weight: bold;
-      text-transform: uppercase;
+      color: #FFC907; /* Bold yellow */
+      font-size: 2em;
       margin-bottom: 16px;
-      text-shadow: 2px 2px 6px #000;
     }
-    .hero-subheadline {
-      color: #fff;
-      font-size: 1.2em;
+    .hero p {
+      font-size: 1.1em;
       margin-bottom: 24px;
     }
     .hero-button {
-      background-color: var(--bold-yellow);
-      color: var(--rich-black);
+      background-color: #FFC907; /* Bold yellow */
+      color: #1A1A1A; /* Rich black */
       font-weight: bold;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      border: 2px solid var(--rich-black);
-      border-radius: 24px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 20px;
       text-decoration: none;
       font-size: 1em;
       cursor: pointer;
       display: inline-block;
-      /* No hover effect for simplicity */
+      margin-top: 10px;
+    }
+    .hero-button:hover {
+      background-color: #fff;
+      color: #003366;
     }
 
-    /* Header section styles */
-    header {
-      background-color: #000;
-      color: #fff;
-      text-align: center; /* Center all content in the header */
-      padding: 30px 10px 40px 10px; /* Add space inside the header */
+    /* Story section styles */
+    .story {
+      background-color: #fff;
+      padding: 32px 16px;
+      text-align: center;
     }
-    /* Style the logo image */
-    .logo {
-      width: 80px; /* Make the logo a good size for web */
-      height: auto; /* Keep the image ratio */
-      margin-bottom: 20px; /* Add space below the logo */
+    .story img {
+      width: 200px;
+      border-radius: 8px;
+      margin-top: 20px;
     }
 
-    /* Style for the main title */
-    .main-title {
-      font-size: 2rem; /* Make the title readable */
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      font-family: serif;
+    /* Call-to-action section styles */
+    .cta {
+      background-color: #FFC907; /* Bold yellow */
+      text-align: center;
+      padding: 32px 16px;
     }
-
-    /* Style for the supporter text */
-    .supporter-text {
-      font-size: 1.2rem;
+    .cta button {
+      background-color: #0099cc; /* Blue */
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1em;
+      border-radius: 5px;
+      cursor: pointer;
       font-weight: bold;
-      letter-spacing: 2px;
+    }
+    .cta button:hover {
+      background-color: #0077aa; /* Slightly darker on hover */
     }
 
-    /* Responsive styles for mobile devices */
+    /* Responsive design: Make the page look good on mobile devices */
     @media (max-width: 600px) {
-      .nav-links {
-        display: none; /* Hide nav links on small screens */
-        flex-direction: column;
-        background: var(--deep-navy);
-        position: absolute;
-        top: 56px;
-        right: 10px;
-        width: 150px;
+      .logo-container {
+        font-size: 1.1em;
+        padding: 16px 0 8px 0;
       }
-      .nav-links.show {
-        display: flex; /* Show nav links when menu is open */
-      }
-      .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 1em 0;
-        border-top: 1px solid #fff2;
-      }
-      .hamburger {
-        display: flex; /* Show hamburger on small screens */
-      }
-      .hero h1 {
-        font-size: 1.5em;
+      nav {
+        font-size: 0.95em;
+        padding: 8px;
       }
       .hero {
-        min-height: 40vh;
-        padding: 10px;
+        padding: 30px 8px;
+        min-height: 220px;
       }
-      .hero-button {
-        width: auto; /* Button is only as wide as its text */
-        min-width: 120px;
-        max-width: 90vw;
-        padding: 12px 20px;
+      .hero h1 {
+        font-size: 1.2em;
+      }
+      .hero p {
         font-size: 1em;
       }
-      .logo {
-        width: 60px; /* Make the logo smaller on mobile */
+      .hero-button {
+        padding: 10px 18px;
+        font-size: 0.95em;
       }
-      .main-title {
-        font-size: 1.2rem;
+      .story {
+        padding: 18px 6px;
       }
-      .supporter-text {
-        font-size: 1rem;
+      .story img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
       }
-      header {
-        padding: 20px 5px 25px 5px;
+      .cta {
+        padding: 18px 6px;
+      }
+      .cta button {
+        padding: 10px 18px;
+        font-size: 1em;
+      }
+      /* Show hamburger menu on mobile */
+
+      /* Make the nav links appear as a sidebar on the left side for mobile */
+      .nav-links {
+        position: absolute;
+        top: 48px;              /* Below the nav bar */
+        left: 0;                /* Stick to the left edge */
+        right: auto;
+        width: 180px;           /* Sidebar width */
+        max-width: 80vw;
+        border-radius: 0 8px 8px 0; /* Rounded corners on right side */
+        box-shadow: 2px 0 16px rgba(0,0,0,0.12); /* Shadow on right */
+        border-right: 2px solid #FFC907; /* Yellow border on right */
+        border-top: 2px solid #FFC907;
+        border-bottom: 2px solid #FFC907;
+        background: #fff;       /* White background for good contrast */
+        padding: 8px 0;
+        z-index: 100;
+        display: flex;          /* Always show nav links */
+        flex-direction: column; /* Stack links vertically */
+        /* Make nav links easy to see */
+        border-left: 2px solid #003366; /* Add a dark blue border on the left for visibility */
+      }
+      /* Show sidebar when .show class is added */
+      .nav-links.show {
+        display: flex;
+      }
+      /* Hamburger menu on the left */
+      /* Remove the white strip behind the hamburger menu by making nav background transparent */
+      nav {
+        background: transparent !important;
+      }
+      .hamburger {
+        display: flex;
+        left: 10px;
+        right: auto;
+        position: absolute;
+        top: 10px;
+      }
+      /* Style individual nav links in mobile sidebar */
+      .nav-links a {
+        display: block;
+        padding: 10px 14px;
+        margin: 0;
+        border-bottom: 1px solid #FFC907; /* Yellow divider */
+        color: #003366;
+        background: none;
+        border-radius: 0;
+        text-align: left;
+        font-weight: bold;
+        font-size: 0.98em;      /* Slightly smaller text */
+        letter-spacing: 0.2px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a:focus {
+        background: #FFF9E3; /* Light yellow highlight for better readability */
+        color: #1A1A1A; /* Black text on yellow */
+        outline: none;
+        color: #1A1A1A; /* Make nav link text black */
+      }
+      /* Hide nav links sidebar by default on mobile */
+      .nav-links {
+        display: none;
+      }
+      /* Always show nav links with a yellow background and dark text for visibility */
+      .nav-links a {
+        background: #FFF9E3; /* Light yellow background */
+        color: #1A1A1A;      /* Black text */
+      }
+      /* Remove border from last link */
+      .nav-links a:last-child {
+        border-bottom: none;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Logo banner at the top -->
+  <!-- Logo banner: now uses the provided square logo image, centered -->
   <div class="logo-container">
-    <!-- Changed logo image to the new file name -->
-    <!-- Logo for charity: water, shows a yellow water drop icon next to the words charity water in black text, set on a white rectangular background, simple and hopeful design -->
-    <img src="/workspaces/CR-02-charity-water-lp/img/charity-waterlogoblackrectangle.png.jpg" class="logo" alt="Yellow water drop icon next to charity water in black text on a white rectangle, clean and hopeful logo design">
+    <!-- Logo image is centered and sized using CSS -->
+    <!-- Logo image: black horizontal version, centered -->
+    <!-- Logo image: black horizontal version, centered for beginners -->
+
+  <!--
+    For hamburger navigation, the dropdown menu should only appear when clicked.
+    No code is needed here for the logo, but the hamburger menu toggle is handled by JavaScript below.
+    The navigation links container (.nav-links) is hidden by default on mobile and shown only when the "show" class is added.
+  -->
+    <!-- Logo image: black square version, centered for beginners -->
+    <img src="img/black-charity-water.jpg" alt="Charity Water logo with bold black text on a white background, conveying a sense of hope and trust" class="logo-img">
   </div>
-  <!-- Navigation bar with hamburger menu -->
+
+  <!-- Navigation bar with improved structure for the hamburger menu -->
   <nav>
-    <div class="nav-brand">
-      <img src="https://www.charitywater.org/_next/static/media/logo.2c489fc2.svg" alt="charity: water logo" class="nav-logo-img">
-      Charity: Water
+    <!-- Hamburger icon for mobile navigation -->
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
+      <!-- Use a simple SVG icon for better structure and accessibility -->
+      <!-- The SVG is a basic hamburger icon (three horizontal lines) -->
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+        <rect y="6" width="28" height="3" rx="1.5" fill="#fff"/>
+        <rect y="13" width="28" height="3" rx="1.5" fill="#fff"/>
+        <rect y="20" width="28" height="3" rx="1.5" fill="#fff"/>
+      </svg>
+    </button>
+    <!-- Navigation links -->
+    <div class="nav-links" id="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#story">Story</a>
+      <a href="#cta">Donate</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Story</a></li>
-      <li><a href="#">Donate</a></li>
-    </ul>
   </nav>
+
   <!-- Hero section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>YOU CAN’T FIX EVERYTHING.<br>BUT THIS? YOU CAN.</h1>
-      <p class="hero-subheadline">
-        785 million people don’t have access to clean water. You can help change that today.
-      </p>
-      <a href="#" class="hero-button">BE THE CHANGE</a>
+  <section class="hero" id="hero">
+    <!-- Main headline for the hero section -->
+    <!-- Main headline: large, bold, and easy to read with extra spacing -->
+    <h1 style="
+      font-size: 2.7em;           /* Larger text for more impact */
+      font-weight: bold;          /* Bold for emphasis */
+      line-height: 1.25;          /* Good line spacing for readability */
+      letter-spacing: 1.2px;      /* Slightly more spacing between letters */
+      margin-bottom: 28px;        /* More space below the headline */
+      color: #FFC907;             /* Bright yellow text */
+      text-shadow: 1px 2px 8px rgba(0,0,0,0.18); /* Soft shadow for readability */
+      display: block;             /* Headline takes full width */
+      max-width: 95%;             /* Prevents overflow on small screens */
+    ">
+      YOU CAN’T FIX EVERYTHING.<br>BUT THIS? YOU CAN.
+    </h1>
+    <!-- Two sentences stacked and centered for easy reading -->
+    <div style="text-align: center; margin-bottom: 24px;">
+      <span style="display: block; font-size: 1.2em; margin-bottom: 8px;">
+      785 million people don’t have access to clean water.
+      </span>
+      <span style="display: block; font-size: 1.2em;">
+      You can help change that today.
+      </span>
+    </div>
+    <!-- Call-to-action button with a simple 3D effect using box-shadow -->
+    <a href="#cta" class="hero-button" style="box-shadow: 0 4px 0 #bfa004;">BE THE CHANGE</a>
+  </section>
+
+  <!-- Story section -->
+  <section class="story" id="story" style="background-color: #ffffff; padding: 28px 12px; border-top: 3px solid #FFC907; border-bottom: 3px solid #FFC907;">
+    <!-- Section heading -->
+    <h2 style="color: #003366;">Meet Sita from Nepal</h2>
+    <!-- Short description about Sita -->
+    <p style="font-size: 1.08em; color: #333;">
+      Sita is a student in rural Nepal. Thanks to donors, her family now has clean water at home. She can focus on her studies and spend more time with loved ones.
+    </p>
+    <!-- Images of Sita with borders for emphasis -->
+    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 18px;">
+      <!-- First image -->
+      <img src="img/college student.jpg" alt="Sita from Nepal" style="width: 140px; border: 7px solid #FFC907; border-radius: 10px; background: #fff; padding: 4px;">
+      <!-- Second image -->
+      <img src="img/college student 2.jpg" alt="Sita from Nepal" style="width: 140px; border: 3px solid #FFC907; border-radius: 10px; background: #fff; padding: 4px;">
+      <!-- Third image -->
+      <img src="img/college student 3.jpg" alt="Sita from Nepal" style="width: 140px; border: 3px solid #FFC907; border-radius: 10px; background: #fff; padding: 4px;">
     </div>
   </section>
-  <!-- Header section starts here -->
-  <header>
-    <!-- Logo image for charity: water -->
-    <!-- The image is placed at the top of the header -->
-    <img src="/workspaces/CR-02-charity-water-lp/img/charity-waterlogoblackrectangle.png.jpg" alt="Yellow water drop icon next to charity water in black text on a white rectangle, clean and hopeful logo design" class="logo">
-    <!-- Main title for the website -->
-    <div class="main-title">charity: water</div>
-    <!-- Supporter text below the title -->
-    <div class="supporter-text">SUPPORTER</div>
-  </header>
-  <!-- Header section ends here -->
-  <!-- Simple script for hamburger menu -->
-  <script>
-    // Hamburger menu for mobile
-    function toggleMenu() {
-      var navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('show');
-    }
-  </script>
-</body>
-</html>
+
+    <!-- Call-to-Action section -->
+    <section class="cta" id="cta" style="background-color: #003366; color: #fff; text-align: center; padding: 32px 16px;">
+      <!-- Heading encourages visitors to take action -->
+      <h2 style="color: #FFC907; margin-bottom: 18px;">Together, we can bring clean water to everyone.</h2>
+      <p style="font-size: 1.1em; margin-bottom: 24px;">
+      Your support helps families like Sita's get safe water, close to home. Every donation makes a difference.
+      </p>
+      <!-- Donate button uses the yellow color for emphasis -->
+      <a href="https://www.charitywater.org/donate" target="_blank"
+       class="hero-button"
+       style="background-color: #FFC907; color: #003366; border-radius: 20px; padding: 14px 32px; font-size: 1.1em; text-decoration: none; font-weight: bold; display: inline-block;">
+      Donate Now
+      </a>
+    </section>
+    <!-- (Duplicate CTA section removed as requested) -->
+
+    <!-- Contact section -->
+    <section class="contact" id="contact" style="text-align: center;">
+      <!-- Heading for the contact section -->
+      <h2>Contact Us</h2>
+      <!-- Simple contact form for visitors to reach out -->
+      <form id="contact-form" style="display: inline-block; text-align: left; max-width: 320px; width: 100%;">
+      <!-- Name input -->
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" name="name" required style="width: 100%;"><br><br>
+
+      <!-- Email input -->
+      <label for="email">Your Email:</label><br>
+      <input type="email" id="email" name="email" required style="width: 100%;"><br><br>
+
+      <!-- Dropdown for how you want to help -->
+      <label for="interest">How would you like to help?</label><br>
+      <select id="interest" name="interest" required style="width: 100%;">
+        <option value="">--Please choose an option--</option>
+        <option value="donate">Donate</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="spread">Spread the Word</option>
+        <option value="fundraise">Start a Fundraiser</option>
+      </select><br><br>
+
+      <!-- Message box -->
+      <label for="message">Your Message:</label><br>
+      <textarea id="message" name="message" rows="3" style="width: 100%;"></textarea><br><br>
+
+      <!-- Submit button -->
+      <button type="submit" style="width: 100%;">Submit</button>
+      </form>
+
+      <!-- Thank you message (hidden at first) -->
+      <div id="thank-you" style="display:none; margin-top:16px; color:green; font-weight:bold;">
+      <!-- Thank you message will appear here after form submission -->
+      </div>
+
+      <!-- Simple script to show thank you message after form is submitted -->
+      <script>
+      // Get the form and thank you message elements
+      const form = document.getElementById('contact-form');
+      const thankYou = document.getElementById('thank-you');
+
+      // Listen for form submission
+      form.onsubmit = function(event) {
+        event.preventDefault(); // Prevent page reload
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const interest = document.getElementById('interest').value;
+
+        // Show thank you message with submitted info
+        thankYou.innerHTML = "Thank you, " + name + "!<br>We appreciate your interest in: <b>" + interest.charAt(0).toUpperCase() + interest.slice(1) + "</b>.";
+        thankYou.style.display = "block";
+
+        // Optionally, hide the form
+        form.style.display = "none";
+      };
+          </script>
+    </section>
+
+    <!-- Footer section with social media icons and links -->
+    <!-- We use simple SVG icons for Facebook, Twitter, and Instagram -->
+    <!-- SVGs are beginner-friendly and do not require extra files or libraries -->
+    <footer style="background: #FFE066; color: #1A1A1A; text-align: center; padding: 20px 0; margin-top: 30px;">
+      <!-- Social media links (using only the provided image icons) -->
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/charitywater" target="_blank" style="margin: 0 10px;">
+      <img src="img/facebook icon.webp" alt="Facebook" style="width: 28px; height: 28px; vertical-align: middle;">
+      </a>
+      <!-- Twitter -->
+      <a href="https://twitter.com/charitywater" target="_blank" style="margin: 0 10px;">
+      <img src="img/twitter icon.webp" alt="Twitter" style="width: 28px; height: 28px; vertical-align: middle;">
+      </a>
+      <!-- Instagram -->
+      <a href="https://instagram.com/charitywater" target="_blank" style="margin: 0 10px;">
+      <img src="img/instagram icon.webp" alt="Instagram" style="width: 28px; height: 28px; vertical-align: middle;">
+      </a>
+      <div style="margin-bottom: 8px;">
+      <!-- Each link opens in a new tab -->
+    
+      </div>
+      <!-- Simple copyright -->
+      <div style="font-size: 0.95em;">&copy; 2024 Charity Nonprofit. All rights reserved.</div>
+    </footer>
+  
+    <!-- Hamburger menu script -->
+    <script>
+      // Beginner-friendly hamburger menu toggle
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const navLinks = document.getElementById('nav-links');
+      hamburgerBtn.onclick = function() {
+        navLinks.classList.toggle('show');
+      };
+    </script>
+    <style>
+      /* Make nav link text black in normal (desktop) view */
+      nav .nav-links a {
+        color: #1A1A1A; /* Black text */
+        background: none;
+        border: 2px solid transparent;
+        transition: background 0.2s, color 0.2s, border 0.2s;
+      }
+      /* On hover, make text white and background yellow, with white or yellow border */
+      nav .nav-links a:hover,
+      nav .nav-links a:focus {
+        color: #fff; /* White text */
+        background: #FFC907; /* Yellow background */
+        border: 2px solid #fff; /* White border */
+        outline: none;
+      }
+      /* On active/click, keep the hover style for feedback */
+      nav .nav-links a:active {
+        color: #fff;
+        background: #FFC907;
+        border: 2px solid #fff;
+      }
+      /* On mobile, keep previous styles (already set in main CSS) */
+      @media (max-width: 600px) {
+        nav .nav-links a {
+          color: #1A1A1A;
+          background: #FFF9E3;
+          border: none;
+        }
+        nav .nav-links a:hover,
+        nav .nav-links a:focus {
+          color: #1A1A1A;
+          background: #FFF9E3;
+          border: none;
+        }
+      }
+    </style>
+  </body>
+  </html>
